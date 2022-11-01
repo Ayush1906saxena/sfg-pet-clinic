@@ -89,20 +89,16 @@ class OwnerSDJpaServiceTest {
     @Test
     void save() {
         Owner ownerToSave = Owner.builder().id(1L).build();
-
         when(ownerRepository.save(any())).thenReturn(returnOwner);
 
         Owner savedOwner = service.save(ownerToSave);
-
         assertNotNull(savedOwner);
-
         verify(ownerRepository).save(any());
     }
 
     @Test
     void delete() {
         service.delete(returnOwner);
-
         //default is 1 times
         verify(ownerRepository, times(1)).delete(any());
     }
@@ -110,7 +106,6 @@ class OwnerSDJpaServiceTest {
     @Test
     void deleteById() {
         service.deleteById(1L);
-
         verify(ownerRepository).deleteById(anyLong());
     }
 }
