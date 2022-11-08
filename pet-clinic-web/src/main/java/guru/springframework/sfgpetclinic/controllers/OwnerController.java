@@ -37,17 +37,21 @@ public class OwnerController {
 
     @GetMapping
     public String processFindForm(Owner owner, BindingResult result, Model model){
-        if (owner.getLastName() == null)
+        if (owner.getLastName() == null) {
             owner.setLastName("");
+        }
 
-        List<Owner> results = ownerService.findAllByLastNameLike("%"+ owner.getLastName() + "%");
-        if (results.isEmpty()){
+        List<Owner> results = ownerService.findAllByLastNameLike("%" + owner.getLastName() + "%");
+        if (results.isEmpty()) {
+            // no owners found
             result.rejectValue("lastName", "notFound", "not found");
             return "owners/findOwners";
         } else if (results.size() == 1) {
+            // 1 owner found
             owner = results.get(0);
             return "redirect:/owners/" + owner.getId();
         } else {
+            // multiple owners found
             model.addAttribute("selections", results);
             return "owners/ownersList";
         }
