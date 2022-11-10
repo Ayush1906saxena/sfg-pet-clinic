@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
@@ -11,6 +12,7 @@ import javax.persistence.MappedSuperclass;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@SuperBuilder
 @MappedSuperclass
 public class Person extends BaseEntity{
     public Person(Long id, String firstName, String lastName){

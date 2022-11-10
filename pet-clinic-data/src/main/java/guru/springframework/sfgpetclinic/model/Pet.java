@@ -1,6 +1,9 @@
 package guru.springframework.sfgpetclinic.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
@@ -16,18 +19,18 @@ import java.util.Set;
 @Entity
 @Table(name = "pets")
 public class Pet extends BaseEntity{
-    @Builder
-    public Pet(Long id, String name, PetType petType, Owner owner, LocalDate birthDate, Set<Visit> visits) {
-        super(id);
-        this.name = name;
-        this.petType = petType;
-        this.owner = owner;
-        this.birthDate = birthDate;
-
-        if (visits == null || visits.size() > 0 ) {
-            this.visits = visits;
-        }
-    }
+//    @Builder
+//    public Pet(Long id, String name, PetType petType, Owner owner, LocalDate birthDate, Set<Visit> visits) {
+//        super(id);
+//        this.name = name;
+//        this.petType = petType;
+//        this.owner = owner;
+//        this.birthDate = birthDate;
+//
+//        if (visits == null || visits.size() > 0 ) {
+//            this.visits = visits;
+//        }
+//    }
     @Column(name = "name")
     private String name;
     @ManyToOne
